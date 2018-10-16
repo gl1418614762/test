@@ -1,0 +1,62 @@
+server:
+  port: 8085
+##数据源配置
+spring:
+  datasource:
+        url : jdbc:mysql://localhost:3306/text?useUnicode=true&characterEncoding=utf8
+        username : ROOT
+        password : root
+        driver-class-name : com.mysql.jdbc.Driver
+#==================================配置上传文件的大小===========================
+  http:
+       multipart:
+          maxFileSize: 100Mb
+          maxRequestSize: 100Mb
+#=====================================spring colud========================
+  cloud :
+      bootstrap.enabled:false
+#默认后缀
+  thymeleaf:
+        prefix : /static/ 
+#加载jsp spring.mvc.view.suffix=.jsp
+  mvc:
+     view:
+        suffix : .html  
+#======================================redis =============================
+##Redis 配置
+##Redis服务器地址 端口号
+  redis:
+      host : 127.0.0.1
+      port : 6379
+#===================================freemarker =========================
+##Freemarker 配置
+##文件配置路径
+  freemarker:
+     template-loader-path : classpath:/templates/
+     cache : false
+     charset : UTF-8
+     check-template-location : true
+     content-type : text/html
+     expose-request-attributes : true 
+     expose-session-attributes : true
+     request-context-attribute : request
+     suffix : .ftl
+
+##Mybatis 配置
+mybatis :
+  typeAliasesPackage : com.example.demo.pojo
+  mapperLocations : classpath:mapper/*.xml
+#静态属性
+application :
+   hello : HelloAngel From application 
+#=====================================  log  =============================  
+logging :
+   config : classpath:logback-boot.xml
+   file : myLog.log
+
+
+
+#pagehelper.helperDialect:mysql
+#pagehelper.reasonable:true
+#pagehelper.supportMethodsArguments:true
+#pagehelper.params:count=countSql
